@@ -33,14 +33,14 @@ class MyHomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
-              const Profile(
+              const ProfileWidget(
                 avatarImage: AssetImage('assets/profile.jpg'),
                 name: 'Даша Птицина',
               ),
               const SizedBox(height: 20),
-              About(
+              AboutWidget(
                 items: [
-                  AboutItem(
+                  AboutItemWidget(
                     title: 'Разработка на Flutter',
                     text: 'Создаю самые разные кроссплатформенные приложения.',
                     icon: SvgPicture.asset('assets/flutter_logo.svg'),
@@ -55,11 +55,11 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-class Profile extends StatelessWidget {
+class ProfileWidget extends StatelessWidget {
   final ImageProvider<Object> avatarImage;
   final String name;
 
-  const Profile({
+  const ProfileWidget({
     super.key,
     required this.avatarImage,
     required this.name,
@@ -80,12 +80,12 @@ class Profile extends StatelessWidget {
   }
 }
 
-class AboutItem extends StatelessWidget {
+class AboutItemWidget extends StatelessWidget {
   final String title;
   final String text;
   final Widget? icon;
 
-  const AboutItem({
+  const AboutItemWidget({
     super.key,
     required this.title,
     required this.text,
@@ -126,10 +126,10 @@ class AboutItem extends StatelessWidget {
   }
 }
 
-class About extends StatelessWidget {
-  final List<AboutItem> items;
+class AboutWidget extends StatelessWidget {
+  final List<AboutItemWidget> items;
 
-  const About({
+  const AboutWidget({
     super.key,
     required this.items,
   });
@@ -147,12 +147,9 @@ class About extends StatelessWidget {
           ),
         ),
         for (final item in items)
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              item,
-              const SizedBox(height: 16),
-            ],
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5),
+            child: item,
           ),
       ],
     );
