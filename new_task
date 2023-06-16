@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ID="$1"
+NAME="$2"
+URL="$3"
+
+# [ -n "$URL" ] || { echo "Too few parameters"; exit 1; }
+
+{ GIT_STATUS=$(git status --porcelain |tee /dev/fd/3); } 3>&1
+[ -z "$GIT_STATUS" ] || { echo "Work tree is dirty"; exit 1; }
+
+git clone --depth=1 'git@github.com:surfstudio/surf-flutter-courses-template.git' "$ID"
+cd "$ID"
+rm -rf ".git/"
+cp ../_template/* ./
+
+sed -i \
+    -e "s/__TASK_ID__/$ID/" \
+    -e "s/__TASK_NAME__/$NAME/" \
+    -e "s|__TASK_URL__|$URL|" \
+    README.md
+
+flutter pub get
+
+git add .
+git commit -m "[$ID]: Flutter project template"
+
+git checkout -b "$ID"
+git commit --allow-empty -m "[$ID]: $NAME" -m "$URL"
+
+code "lib/main.dart"
