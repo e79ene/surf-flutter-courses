@@ -10,6 +10,7 @@ URL="$3"
 { GIT_STATUS=$(git status --porcelain |tee /dev/fd/3); } 3>&1
 [ -z "$GIT_STATUS" ] || { echo "Work tree is dirty"; exit 1; }
 
+git checkout main
 git clone --depth=1 'git@github.com:surfstudio/surf-flutter-courses-template.git' "$ID"
 cd "$ID"
 rm -rf ".git/"
