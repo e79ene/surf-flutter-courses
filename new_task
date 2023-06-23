@@ -25,7 +25,7 @@ sed -i \
 flutter pub get
 
 git add .
-git commit -m "[$ID]: Flutter project template"
+git commit -qm "[$ID]: Flutter project template"
 
 git checkout -b "$ID"
 git commit --allow-empty -m "[$ID]: $NAME" -m "$URL"
