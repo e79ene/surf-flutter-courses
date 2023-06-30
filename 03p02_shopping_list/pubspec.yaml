@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
@@ -18,3 +19,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: Sora
+      fonts:
+        - asset: fonts/Sora-VariableFont_wght.ttf
