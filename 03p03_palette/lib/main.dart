@@ -1,20 +1,10 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'data/data_from_asset.dart';
+import 'view/app_ui.dart';
 
 void main() {
-  runApp(const MainApp());
-}
+  final data = DataFromAsset(rootBundle, 'assets/colors.json');
+  final appUI = AppUI(data: data);
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
-    );
-  }
+  appUI.start();
 }
