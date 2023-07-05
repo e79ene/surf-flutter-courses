@@ -24,13 +24,15 @@ class ColorDetailsScreen extends StatelessWidget {
                 Positioned.fill(
                   child: ColoredBox(color: colorSample.color),
                 ),
-                Positioned(
-                  top: 16,
-                  left: 16,
-                  child: IconButton(
-                    icon: const Icon(Icons.arrow_back_ios),
-                    color: Colors.white,
-                    onPressed: () => Navigator.pop(context),
+                SafeArea(
+                  child: Positioned(
+                    top: 16,
+                    left: 16,
+                    child: IconButton(
+                      icon: const Icon(Icons.arrow_back_ios),
+                      color: Colors.white,
+                      onPressed: () => Navigator.pop(context),
+                    ),
                   ),
                 ),
               ],
